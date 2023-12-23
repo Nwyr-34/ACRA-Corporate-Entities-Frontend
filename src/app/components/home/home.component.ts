@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CorporateEntityService } from 'src/app/services/corporate-entity/corporate-entity.service';
 
 @Component({
   selector: 'app-home',
@@ -7,4 +8,19 @@ import { Component } from '@angular/core';
 })
 export class HomeComponent {
 
+  entity: any[] = [];
+
+  constructor(private entityService: CorporateEntityService) { }
+
+  ngOnInit(): void {
+    this.filldata();
+  }
+
+  filldata(){
+    this.entityService.getAllEntities().subscribe((data: any[])=>{
+      console.log(data);
+      this.entity = data;
+    })
+  }
+  
 }

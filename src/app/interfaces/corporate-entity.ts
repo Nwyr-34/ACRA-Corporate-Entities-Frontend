@@ -1,0 +1,35 @@
+export interface CorporateEntity {
+    uen: string
+    issuanceAgencyId: string
+    entityName: string
+    entityTypeDescription: string
+    businessConstitutionDescription: string
+    companyTypeDescription: string
+    entityStatusDescription: string
+    registrationIncorporationDate: string
+    uenIssueDate: string
+    addressType: string
+    block: number
+    streetName: string
+    level: string
+    unit: string
+    buildingName: string
+    postalCode: string
+    accountDueDate: string
+    annualReturnDate: string
+    noOfCharges: number
+    primarySsicCode: number
+    primarySsicDescription: string
+    primaryUserDescribedActivity: string
+    secondarySsicCode: string
+    secondarySsicDescription: string
+    secondaryUserDescribedActivity: string
+    noOfOfficers: number
+    formerEntityName: string
+    paidUpCapitalCurrency: string
+    paidUpCapitalOrdinary: string
+    paidUpCapitalPreference: string
+    paidUpCapitalOthers: string
+    uenOfAuditFirm: string
+    nameOfAuditFirm: string
+}
