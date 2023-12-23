@@ -1,9 +1,23 @@
 .container {
   margin-left: 100px;
-    margin-right: 100px;
-    margin-top: 5px;
+  margin-right: 100px;
+  margin-top: 5px;
 }
 
-table {
+.main-table {
   margin-top: 20px;
+  overflow-x: auto;
+}
+
+td{
+  background-color: aliceblue;
+}
+.pointer {
+  cursor: pointer;
+}
+
+
+.icon-container {
+  max-width: fit-content;
+  
 }

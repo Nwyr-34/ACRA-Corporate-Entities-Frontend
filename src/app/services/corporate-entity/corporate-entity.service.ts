@@ -14,4 +14,9 @@ export class CorporateEntityService {
     return this.http.get<any>(this.API_SERVER);
   }
 
+  public deleteEntity(id: string): Observable<any>{
+    return this.http.delete<any>(this.API_SERVER + "/" + id);
+  }
+
+
 }

@@ -1,12 +1,8 @@
 import { Component } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { CorporateEntity } from 'src/app/interfaces/corporate-entity';
+import { CorporateEntityService } from 'src/app/services/corporate-entity/corporate-entity.service';
 
-
-
-const ELEMENT_DATA: CorporateEntity[] = [
-  { uen: '00031800X', issuanceAgencyId: 'ACRA', entityName: 'A M ABDULLAH SAHIB & CO', entityTypeDescription: 'Business', businessConstitutionDescription: 'Partnership', companyTypeDescription: 'na', entityStatusDescription: 'na', registrationIncorporationDate: '1974-10-12T00:00:00', uenIssueDate: '2008-09-09T00:00:00', addressType: 'LOCAL', block: 93, streetName: 'MARKET STREET', level: '10', unit: '01', buildingName: 'CYS BLDG', postalCode: '0104', accountDueDate: 'na', annualReturnDate: 'na', noOfCharges: 0, primarySsicCode: 46301, primarySsicDescription: 'WHOLESALE OF FRUITS AND VEGETABLES (INCLUDING FRESH AND FROZEN)', primaryUserDescribedActivity: 'na', secondarySsicCode: "32909", secondarySsicDescription: 'OTHER MANUFACTURING INDUSTRIES N.E.C.', secondaryUserDescribedActivity: 'na', noOfOfficers: 7, formerEntityName: 'na', paidUpCapitalCurrency: 'na', paidUpCapitalOrdinary: 'na', paidUpCapitalPreference: 'na', paidUpCapitalOthers: 'na', uenOfAuditFirm: 'na', nameOfAuditFirm: 'na' },
-
-];
 
 
 @Component({
@@ -15,6 +11,8 @@ const ELEMENT_DATA: CorporateEntity[] = [
   styleUrls: ['./entitites.component.css']
 })
 export class EntititesComponent {
+
+  listEntity: CorporateEntity[] = [];
   displayedColumns = [
     'uen',
     'issuanceAgencyId',
@@ -48,9 +46,42 @@ export class EntititesComponent {
     'paidUpCapitalPreference',
     'paidUpCapitalOthers',
     'uenOfAuditFirm',
-    'nameOfAuditFirm',
-    
+    'nameOfAuditFirm',    
     'actions',
   ];
-  dataSource = ELEMENT_DATA;
+
+  dataSource = this.listEntity;
+
+
+  constructor(private entityService: CorporateEntityService, private _snackBar: MatSnackBar) { }
+
+  ngOnInit(): void {
+    this.loadEntities();
+  }
+
+  loadEntities(){
+    this.entityService.getAllEntities().subscribe((data: CorporateEntity[])=>{
+      console.log(data);
+      this.dataSource = data;
+    })
+  }
+
+  deleteEntity(id: string){
+    this.entityService.deleteEntity(id).subscribe(data => {
+      this.loadEntities();
+    })
+
+    this._snackBar.open('Entity Deleted with exit', 'Close', {
+      duration: 3000,
+      horizontalPosition: 'center',
+      verticalPosition: 'bottom',
+    })
+
+  }
+
+
+
+
+
+  
 }

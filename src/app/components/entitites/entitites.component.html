@@ -3,188 +3,204 @@
         <span>Corporate Entities</span>
     </mat-toolbar>
 
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z3">
-
-        <ng-container matColumnDef="uen" sticky>
-            <th mat-header-cell *matHeaderCellDef> UEN</th>
-            <td mat-cell *matCellDef="let element"> {{element.uen}} </td>
-          </ng-container>
+    
+    <div *ngIf="dataSource.length > 0">
+        <div class="main-table">
+            <table mat-table [dataSource]="dataSource" class="mat-elevation-z5">
+    
+                <ng-container matColumnDef="uen" sticky>
+                    <th mat-header-cell *matHeaderCellDef> UEN</th>
+                    <td mat-cell *matCellDef="let element"> {{element.uen}} </td>
+                  </ng-container>
+                
+                <ng-container matColumnDef="issuanceAgencyId">
+                  <th mat-header-cell *matHeaderCellDef> Issuance agency id </th>
+                  <td mat-cell *matCellDef="let element"> {{element.issuanceAgencyId}} </td>
+                </ng-container>
+            
+                <!-- Weight Column -->
+                <ng-container matColumnDef="entityName" sticky>
+                  <th mat-header-cell *matHeaderCellDef> Entity name </th>
+                  <td mat-cell *matCellDef="let element"> {{element.entityName}} </td>
+                </ng-container>
+            
+                <!-- Symbol Column -->
+                <ng-container matColumnDef="entityTypeDescription">
+                  <th mat-header-cell *matHeaderCellDef> Entity type description </th>
+                  <td mat-cell *matCellDef="let element"> {{element.entityTypeDescription}} </td>
+                </ng-container>
         
-        <ng-container matColumnDef="issuanceAgencyId" sticky>
-          <th mat-header-cell *matHeaderCellDef> Issuance agency id </th>
-          <td mat-cell *matCellDef="let element"> {{element.issuanceAgencyId}} </td>
-        </ng-container>
-    
-        <!-- Weight Column -->
-        <ng-container matColumnDef="entityName">
-          <th mat-header-cell *matHeaderCellDef> Entity name </th>
-          <td mat-cell *matCellDef="let element"> {{element.entityName}} </td>
-        </ng-container>
-    
-        <!-- Symbol Column -->
-        <ng-container matColumnDef="entityTypeDescription">
-          <th mat-header-cell *matHeaderCellDef> Entity type description </th>
-          <td mat-cell *matCellDef="let element"> {{element.entityTypeDescription}} </td>
-        </ng-container>
+                <ng-container matColumnDef="businessConstitutionDescription">
+                    <th mat-header-cell *matHeaderCellDef> Business Constitution Description </th>
+                    <td mat-cell *matCellDef="let element"> {{element.businessConstitutionDescription}} </td>
+                  </ng-container>
+                  
+                  <ng-container matColumnDef="companyTypeDescription">
+                    <th mat-header-cell *matHeaderCellDef> Company Type Description </th>
+                    <td mat-cell *matCellDef="let element"> {{element.companyTypeDescription}} </td>
+                  </ng-container>
+                  
+                  <ng-container matColumnDef="entityStatusDescription">
+                    <th mat-header-cell *matHeaderCellDef> Entity Status Description </th>
+                    <td mat-cell *matCellDef="let element"> {{element.entityStatusDescription}} </td>
+                  </ng-container>
+                  
+                  <ng-container matColumnDef="registrationIncorporationDate">
+                    <th mat-header-cell *matHeaderCellDef> Registration Incorporation Date </th>
+                    <td mat-cell *matCellDef="let element"> {{element.registrationIncorporationDate}} </td>
+                  </ng-container>
+        
+                  <ng-container matColumnDef="uenIssueDate">
+                    <th mat-header-cell *matHeaderCellDef> Uen Issue Date </th>
+                    <td mat-cell *matCellDef="let element"> {{element.uenIssueDate}} </td>
+                  </ng-container>
+        
+                  <ng-container matColumnDef="addressType">
+                    <th mat-header-cell *matHeaderCellDef> Address Type </th>
+                    <td mat-cell *matCellDef="let element"> {{element.addressType}} </td>
+                  </ng-container>
+                  
+                  <ng-container matColumnDef="block">
+                    <th mat-header-cell *matHeaderCellDef> Block </th>
+                    <td mat-cell *matCellDef="let element"> {{element.block}} </td>
+                  </ng-container>
+                  
+                  <ng-container matColumnDef="streetName">
+                    <th mat-header-cell *matHeaderCellDef> Street Name </th>
+                    <td mat-cell *matCellDef="let element"> {{element.streetName}} </td>
+                  </ng-container>
+                  
+                  <ng-container matColumnDef="level">
+                    <th mat-header-cell *matHeaderCellDef> Level </th>
+                    <td mat-cell *matCellDef="let element"> {{element.level}} </td>
+                  </ng-container>
+                  
+                  <ng-container matColumnDef="unit">
+                    <th mat-header-cell *matHeaderCellDef> Unit </th>
+                    <td mat-cell *matCellDef="let element"> {{element.unit}} </td>
+                  </ng-container>
+                  
+                  <ng-container matColumnDef="buildingName">
+                    <th mat-header-cell *matHeaderCellDef> Building Name </th>
+                    <td mat-cell *matCellDef="let element"> {{element.buildingName}} </td>
+                  </ng-container>
+                  
+                  <ng-container matColumnDef="postalCode">
+                    <th mat-header-cell *matHeaderCellDef> Postal Code </th>
+                    <td mat-cell *matCellDef="let element"> {{element.postalCode}} </td>
+                  </ng-container>
+                  
+                  <ng-container matColumnDef="accountDueDate">
+                    <th mat-header-cell *matHeaderCellDef> Account Due Date </th>
+                    <td mat-cell *matCellDef="let element"> {{element.accountDueDate}} </td>
+                  </ng-container>
+                  
+                  <ng-container matColumnDef="annualReturnDate">
+                    <th mat-header-cell *matHeaderCellDef> Annual Return Date </th>
+                    <td mat-cell *matCellDef="let element"> {{element.annualReturnDate}} </td>
+                  </ng-container>
+                  
+                  <ng-container matColumnDef="noOfCharges">
+                    <th mat-header-cell *matHeaderCellDef> No. of Charges </th>
+                    <td mat-cell *matCellDef="let element"> {{element.noOfCharges}} </td>
+                  </ng-container>
+                  
+                  <ng-container matColumnDef="primarySsicCode">
+                    <th mat-header-cell *matHeaderCellDef> Primary SSIC Code </th>
+                    <td mat-cell *matCellDef="let element"> {{element.primarySsicCode}} </td>
+                  </ng-container>
+                  
+                  <ng-container matColumnDef="primarySsicDescription">
+                    <th mat-header-cell *matHeaderCellDef> Primary SSIC Description </th>
+                    <td mat-cell *matCellDef="let element"> {{element.primarySsicDescription}} </td>
+                  </ng-container>
+                  
+                  <ng-container matColumnDef="primaryUserDescribedActivity">
+                    <th mat-header-cell *matHeaderCellDef> Primary User Described Activity </th>
+                    <td mat-cell *matCellDef="let element"> {{element.primaryUserDescribedActivity}} </td>
+                  </ng-container>
+                  
+                  <ng-container matColumnDef="secondarySsicCode">
+                    <th mat-header-cell *matHeaderCellDef> Secondary SSIC Code </th>
+                    <td mat-cell *matCellDef="let element"> {{element.secondarySsicCode}} </td>
+                  </ng-container>
+                  
+                  <ng-container matColumnDef="secondarySsicDescription">
+                    <th mat-header-cell *matHeaderCellDef> Secondary SSIC Description </th>
+                    <td mat-cell *matCellDef="let element"> {{element.secondarySsicDescription}} </td>
+                  </ng-container>
+                  
+                  <ng-container matColumnDef="secondaryUserDescribedActivity">
+                    <th mat-header-cell *matHeaderCellDef> Secondary User Described Activity </th>
+                    <td mat-cell *matCellDef="let element"> {{element.secondaryUserDescribedActivity}} </td>
+                  </ng-container>
+                  
+                  <ng-container matColumnDef="noOfOfficers">
+                    <th mat-header-cell *matHeaderCellDef> No. of Officers </th>
+                    <td mat-cell *matCellDef="let element"> {{element.noOfOfficers}} </td>
+                  </ng-container>
+                  
+                  <ng-container matColumnDef="formerEntityName">
+                    <th mat-header-cell *matHeaderCellDef> Former Entity Name </th>
+                    <td mat-cell *matCellDef="let element"> {{element.formerEntityName}} </td>
+                  </ng-container>
+                  
+                  <ng-container matColumnDef="paidUpCapitalCurrency">
+                    <th mat-header-cell *matHeaderCellDef> Paid Up Capital Currency </th>
+                    <td mat-cell *matCellDef="let element"> {{element.paidUpCapitalCurrency}} </td>
+                  </ng-container>
+                  
+                  <ng-container matColumnDef="paidUpCapitalOrdinary">
+                    <th mat-header-cell *matHeaderCellDef> Paid Up Capital Ordinary </th>
+                    <td mat-cell *matCellDef="let element"> {{element.paidUpCapitalOrdinary}} </td>
+                  </ng-container>
+                  
+                  <ng-container matColumnDef="paidUpCapitalPreference">
+                    <th mat-header-cell *matHeaderCellDef> Paid Up Capital Preference </th>
+                    <td mat-cell *matCellDef="let element"> {{element.paidUpCapitalPreference}} </td>
+                  </ng-container>
+                  
+                  <ng-container matColumnDef="paidUpCapitalOthers">
+                    <th mat-header-cell *matHeaderCellDef> Paid Up Capital Others </th>
+                    <td mat-cell *matCellDef="let element"> {{element.paidUpCapitalOthers}} </td>
+                  </ng-container>
+                  
+                  <ng-container matColumnDef="uenOfAuditFirm">
+                    <th mat-header-cell *matHeaderCellDef> UEN of Audit Firm </th>
+                    <td mat-cell *matCellDef="let element"> {{element.uenOfAuditFirm}} </td>
+                  </ng-container>
+                  
+                  <ng-container matColumnDef="nameOfAuditFirm">
+                    <th mat-header-cell *matHeaderCellDef> Name of Audit Firm </th>
+                    <td mat-cell *matCellDef="let element"> {{element.nameOfAuditFirm}} </td>
+                  </ng-container>
+        
+        
+            
+                <!-- actions Column -->
+                <ng-container matColumnDef="actions" stickyEnd>
+                  <th mat-header-cell *matHeaderCellDef></th>
+                    <td mat-cell *matCellDef="let element" class="icon-container">
+                    
+                    <a class="pointer" style="color:#1878b0" matTooltip="See Entity">
+                        <mat-icon>search</mat-icon>
+                    </a>
+                    <a class="pointer" style="color:#1f516f"  matTooltip="Edit Entity">
+                        <mat-icon>edit</mat-icon>
+                    </a>
+                    <a class="pointer" (click)="deleteEntity(element.uen)"  style="color:#e15639"  matTooltip="Delete Entity">
+                        <mat-icon>delete</mat-icon>
+                    </a>
+                  </td>
+                </ng-container>
+            
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+              </table>
+        </div>
+    </div>
 
-        <ng-container matColumnDef="businessConstitutionDescription">
-            <th mat-header-cell *matHeaderCellDef> Business Constitution Description </th>
-            <td mat-cell *matCellDef="let element"> {{element.businessConstitutionDescription}} </td>
-          </ng-container>
-          
-          <ng-container matColumnDef="companyTypeDescription">
-            <th mat-header-cell *matHeaderCellDef> Company Type Description </th>
-            <td mat-cell *matCellDef="let element"> {{element.companyTypeDescription}} </td>
-          </ng-container>
-          
-          <ng-container matColumnDef="entityStatusDescription">
-            <th mat-header-cell *matHeaderCellDef> Entity Status Description </th>
-            <td mat-cell *matCellDef="let element"> {{element.entityStatusDescription}} </td>
-          </ng-container>
-          
-          <ng-container matColumnDef="registrationIncorporationDate">
-            <th mat-header-cell *matHeaderCellDef> Registration Incorporation Date </th>
-            <td mat-cell *matCellDef="let element"> {{element.registrationIncorporationDate}} </td>
-          </ng-container>
-
-          <ng-container matColumnDef="uenIssueDate">
-            <th mat-header-cell *matHeaderCellDef> Uen Issue Date </th>
-            <td mat-cell *matCellDef="let element"> {{element.uenIssueDate}} </td>
-          </ng-container>
-
-          <ng-container matColumnDef="addressType">
-            <th mat-header-cell *matHeaderCellDef> Address Type </th>
-            <td mat-cell *matCellDef="let element"> {{element.addressType}} </td>
-          </ng-container>
-          
-          <ng-container matColumnDef="block">
-            <th mat-header-cell *matHeaderCellDef> Block </th>
-            <td mat-cell *matCellDef="let element"> {{element.block}} </td>
-          </ng-container>
-          
-          <ng-container matColumnDef="streetName">
-            <th mat-header-cell *matHeaderCellDef> Street Name </th>
-            <td mat-cell *matCellDef="let element"> {{element.streetName}} </td>
-          </ng-container>
-          
-          <ng-container matColumnDef="level">
-            <th mat-header-cell *matHeaderCellDef> Level </th>
-            <td mat-cell *matCellDef="let element"> {{element.level}} </td>
-          </ng-container>
-          
-          <ng-container matColumnDef="unit">
-            <th mat-header-cell *matHeaderCellDef> Unit </th>
-            <td mat-cell *matCellDef="let element"> {{element.unit}} </td>
-          </ng-container>
-          
-          <ng-container matColumnDef="buildingName">
-            <th mat-header-cell *matHeaderCellDef> Building Name </th>
-            <td mat-cell *matCellDef="let element"> {{element.buildingName}} </td>
-          </ng-container>
-          
-          <ng-container matColumnDef="postalCode">
-            <th mat-header-cell *matHeaderCellDef> Postal Code </th>
-            <td mat-cell *matCellDef="let element"> {{element.postalCode}} </td>
-          </ng-container>
-          
-          <ng-container matColumnDef="accountDueDate">
-            <th mat-header-cell *matHeaderCellDef> Account Due Date </th>
-            <td mat-cell *matCellDef="let element"> {{element.accountDueDate}} </td>
-          </ng-container>
-          
-          <ng-container matColumnDef="annualReturnDate">
-            <th mat-header-cell *matHeaderCellDef> Annual Return Date </th>
-            <td mat-cell *matCellDef="let element"> {{element.annualReturnDate}} </td>
-          </ng-container>
-          
-          <ng-container matColumnDef="noOfCharges">
-            <th mat-header-cell *matHeaderCellDef> No. of Charges </th>
-            <td mat-cell *matCellDef="let element"> {{element.noOfCharges}} </td>
-          </ng-container>
-          
-          <ng-container matColumnDef="primarySsicCode">
-            <th mat-header-cell *matHeaderCellDef> Primary SSIC Code </th>
-            <td mat-cell *matCellDef="let element"> {{element.primarySsicCode}} </td>
-          </ng-container>
-          
-          <ng-container matColumnDef="primarySsicDescription">
-            <th mat-header-cell *matHeaderCellDef> Primary SSIC Description </th>
-            <td mat-cell *matCellDef="let element"> {{element.primarySsicDescription}} </td>
-          </ng-container>
-          
-          <ng-container matColumnDef="primaryUserDescribedActivity">
-            <th mat-header-cell *matHeaderCellDef> Primary User Described Activity </th>
-            <td mat-cell *matCellDef="let element"> {{element.primaryUserDescribedActivity}} </td>
-          </ng-container>
-          
-          <ng-container matColumnDef="secondarySsicCode">
-            <th mat-header-cell *matHeaderCellDef> Secondary SSIC Code </th>
-            <td mat-cell *matCellDef="let element"> {{element.secondarySsicCode}} </td>
-          </ng-container>
-          
-          <ng-container matColumnDef="secondarySsicDescription">
-            <th mat-header-cell *matHeaderCellDef> Secondary SSIC Description </th>
-            <td mat-cell *matCellDef="let element"> {{element.secondarySsicDescription}} </td>
-          </ng-container>
-          
-          <ng-container matColumnDef="secondaryUserDescribedActivity">
-            <th mat-header-cell *matHeaderCellDef> Secondary User Described Activity </th>
-            <td mat-cell *matCellDef="let element"> {{element.secondaryUserDescribedActivity}} </td>
-          </ng-container>
-          
-          <ng-container matColumnDef="noOfOfficers">
-            <th mat-header-cell *matHeaderCellDef> No. of Officers </th>
-            <td mat-cell *matCellDef="let element"> {{element.noOfOfficers}} </td>
-          </ng-container>
-          
-          <ng-container matColumnDef="formerEntityName">
-            <th mat-header-cell *matHeaderCellDef> Former Entity Name </th>
-            <td mat-cell *matCellDef="let element"> {{element.formerEntityName}} </td>
-          </ng-container>
-          
-          <ng-container matColumnDef="paidUpCapitalCurrency">
-            <th mat-header-cell *matHeaderCellDef> Paid Up Capital Currency </th>
-            <td mat-cell *matCellDef="let element"> {{element.paidUpCapitalCurrency}} </td>
-          </ng-container>
-          
-          <ng-container matColumnDef="paidUpCapitalOrdinary">
-            <th mat-header-cell *matHeaderCellDef> Paid Up Capital Ordinary </th>
-            <td mat-cell *matCellDef="let element"> {{element.paidUpCapitalOrdinary}} </td>
-          </ng-container>
-          
-          <ng-container matColumnDef="paidUpCapitalPreference">
-            <th mat-header-cell *matHeaderCellDef> Paid Up Capital Preference </th>
-            <td mat-cell *matCellDef="let element"> {{element.paidUpCapitalPreference}} </td>
-          </ng-container>
-          
-          <ng-container matColumnDef="paidUpCapitalOthers">
-            <th mat-header-cell *matHeaderCellDef> Paid Up Capital Others </th>
-            <td mat-cell *matCellDef="let element"> {{element.paidUpCapitalOthers}} </td>
-          </ng-container>
-          
-          <ng-container matColumnDef="uenOfAuditFirm">
-            <th mat-header-cell *matHeaderCellDef> UEN of Audit Firm </th>
-            <td mat-cell *matCellDef="let element"> {{element.uenOfAuditFirm}} </td>
-          </ng-container>
-          
-          <ng-container matColumnDef="nameOfAuditFirm">
-            <th mat-header-cell *matHeaderCellDef> Name of Audit Firm </th>
-            <td mat-cell *matCellDef="let element"> {{element.nameOfAuditFirm}} </td>
-          </ng-container>
-
-
-    
-        <!-- Star Column -->
-        <ng-container matColumnDef="actions" stickyEnd>
-          <th mat-header-cell *matHeaderCellDef aria-label="row actions">&nbsp;</th>
-          <td mat-cell *matCellDef="let element">
-            <mat-icon>more_vert</mat-icon>
-          </td>
-        </ng-container>
-    
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-      </table>
+    <h2 *ngIf="dataSource.length == 0">There's no entities to show</h2>
 
 </div>
 
