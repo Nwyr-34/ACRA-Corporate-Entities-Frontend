@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { CorporateEntity } from 'src/app/interfaces/corporate-entity';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,10 @@ export class CorporateEntityService {
 
   public deleteEntity(id: string): Observable<any>{
     return this.http.delete<any>(this.API_SERVER + "/" + id);
+  }
+
+  public createEntity(entity: CorporateEntity): Observable<any>{
+    return this.http.post<CorporateEntity>(this.API_SERVER + "/create-entities", entity);
   }
 
 

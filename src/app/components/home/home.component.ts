@@ -18,7 +18,6 @@ export class HomeComponent {
 
   filldata(){
     this.entityService.getAllEntities().subscribe((data: any[])=>{
-      console.log(data);
       this.entity = data;
     })
   }

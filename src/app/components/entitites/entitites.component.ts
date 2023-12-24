@@ -61,7 +61,6 @@ export class EntititesComponent {
 
   loadEntities(){
     this.entityService.getAllEntities().subscribe((data: CorporateEntity[])=>{
-      console.log(data);
       this.dataSource = data;
     })
   }
