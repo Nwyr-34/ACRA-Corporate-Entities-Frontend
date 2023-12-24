@@ -1,10 +1,10 @@
 <div class="container">
     <mat-toolbar>
-        <span>Create Entity</span>
+        <span>{{operation}} Entity</span>
     </mat-toolbar>
 
     <mat-card style="margin-top: 20px;">
-        <form [formGroup]="form" (ngSubmit)="addEntity()">
+        <form [formGroup]="form" (ngSubmit)="addEditEntity()">
             <mat-grid-list cols="4" rowHeight="70px">
                 <mat-grid-tile [colspan]="1" [rowspan]="1" >
                     <mat-form-field>

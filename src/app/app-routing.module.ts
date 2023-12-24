@@ -6,7 +6,8 @@ import { CreateEntityComponent } from './pages/create-entity/create-entity.compo
 const routes: Routes = [
   { path: 'home', component: HomeComponent},
   { path: '', redirectTo:'home', pathMatch:'full'},
-  { path: 'create-entity', component: CreateEntityComponent}
+  { path: 'create-entity', component: CreateEntityComponent},
+  { path: 'edit-entity/:id', component: CreateEntityComponent}
 ];
 
 @NgModule({

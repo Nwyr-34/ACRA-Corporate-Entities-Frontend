@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CorporateEntity } from 'src/app/interfaces/corporate-entity';
 import { CorporateEntityService } from 'src/app/services/corporate-entity/corporate-entity.service';
 
@@ -27,12 +27,17 @@ export class CreateEntityComponent {
 
 
   form: FormGroup;
+  uen: string = '';
+
+  operation: string = 'Create';
+
 
   constructor(private fb: FormBuilder, 
               private corporateEntityService: CorporateEntityService, 
               private router: Router,
-              private _snackBar: MatSnackBar ){
-    this.form = this.fb.group({
+              private _snackBar: MatSnackBar,
+              private aRoute: ActivatedRoute ){
+      this.form = this.fb.group({
       uen: ['', Validators.required],
       issuanceAgencyId: [''],
       entityName: ['',Validators.required],
@@ -67,9 +72,70 @@ export class CreateEntityComponent {
       uenOfAuditFirm: [''],
       nameOfAuditFirm: [''],
     })
+    
+    
+
+    this.aRoute.url.subscribe(data => { console.log(data); 
+      if(data.length <=1 ){
+        return;
+      }
+      this.uen = data[data.length - 1].path
+    })
+    
   }
 
-  addEntity(){
+  ngOnInit(): void {
+    if(this.uen != ''){ 
+      this.operation = 'Edit';
+      this.getEntity(this.uen);
+    }
+  }
+
+  getEntity(uen: string){
+    this.corporateEntityService.getEntity(uen).subscribe(data => {
+      console.log(data);
+      this.form.setValue({
+        uen: data.uen,
+        issuanceAgencyId: data.issuanceAgencyId,
+        entityName: data.entityName,
+        entityTypeDescription: data.entityTypeDescription,
+        businessConstitutionDescription: data.businessConstitutionDescription,
+        companyTypeDescription: data.companyTypeDescription,
+        companyStatusDescription: data.entityStatusDescription,
+        registrationIncorporationDate: data.registrationIncorporationDate,
+        uenIssueDate: data.uenIssueDate,
+        addressType: data.addressType,
+        block: data.block,
+        streetName: data.streetName,
+        level: data.level,
+        unit: data.unit,
+        buildingName: data.buildingName,
+        postalCode: data.postalCode,
+        accountDueDate: data.accountDueDate,
+        annualReturnDate: data.annualReturnDate,
+        noOfCharges: data.noOfCharges,
+        primarySsicCode: data.primarySsicCode,
+        primarySsicDescription: data.primarySsicDescription,
+        primaryUserDescribedActivity: data.primaryUserDescribedActivity,
+        secondarySsicCode: data.secondarySsicCode,
+        secondarySsicDescription: data.secondarySsicDescription,
+        secondaryUserDescribedActivity: data.secondaryUserDescribedActivity,
+        noOfOfficers: data.noOfOfficers,
+        formerEntityName: data.formerEntityName,
+        paidUpCapitalCurrency: data.paidUpCapitalCurrency,
+        paidUpCapitalOrdinary: data.paidUpCapitalOrdinary,
+        paidUpCapitalPreference: data.paidUpCapitalPreference,
+        paidUpCapitalOthers: data.paidUpCapitalOthers,
+        uenOfAuditFirm: data.uenOfAuditFirm,
+        nameOfAuditFirm: data.nameOfAuditFirm
+      })
+
+    })
+  }
+  
+
+  addEditEntity(){
+    //we setup the object to be sent to the backend
     const entity:CorporateEntity = {
       uen: this.form.value.uen,
       issuanceAgencyId: this.form.value.issuanceAgencyId,
@@ -105,18 +171,42 @@ export class CreateEntityComponent {
       uenOfAuditFirm: this.form.value.uenOfAuditFirm,
       nameOfAuditFirm: this.form.value.nameOfAuditFirm,
     }
-
-    this.corporateEntityService.createEntity(this.form.value).subscribe(data => {
-      console.log(data);
-    })
-
-    this.router.navigate(['/home']);
     
-    this._snackBar.open('Entity created successfully', 'Close', {
-      duration: 1500,
-      horizontalPosition: 'center',
-      verticalPosition: 'bottom',
-    })
+    if(this.uen!=''){
+      entity.uen = this.uen;
+      this.editEntity(this.uen, entity);
+    } else {
+      this.addEntity(entity);
+    }
+
+    
   
   }
+  editEntity(uen: string, entity: CorporateEntity){
+    this.corporateEntityService.updateEntity(uen, entity).subscribe(() => {
+      this.router.navigate(['/home']);
+     
+      this._snackBar.open('Entity edited successfully', 'Close', {
+        duration: 3000,
+        horizontalPosition: 'center',
+        verticalPosition: 'bottom',
+      })
+    })
+  }
+
+  addEntity(entity: CorporateEntity){
+
+    //we sent the object to the backend
+    this.corporateEntityService.createEntity(entity).subscribe(data => {
+      
+      this.router.navigate(['/home']);
+     
+      this._snackBar.open('Entity created successfully', 'Close', {
+        duration: 3000,
+        horizontalPosition: 'center',
+        verticalPosition: 'bottom',
+      })
+    })  
+  }
+
 }
