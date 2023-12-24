@@ -9,6 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './components/shared/shared.module';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { EntititesComponent } from './components/entitites/entitites.component';
+import { CreateEntityComponent } from './pages/create-entity/create-entity.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { EntititesComponent } from './components/entitites/entitites.component';
     HomeComponent,
     NavBarComponent,
     EntititesComponent,
+    CreateEntityComponent,
   ],
   imports: [
     BrowserModule,

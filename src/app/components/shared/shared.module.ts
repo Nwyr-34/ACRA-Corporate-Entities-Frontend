@@ -11,6 +11,20 @@ import {MatTableModule} from '@angular/material/table';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatButtonModule} from '@angular/material/button';
+import {MatCardModule} from '@angular/material/card';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatInputModule} from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select';
+
+
+//Formularios
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+
+
+
+
 
 
 
@@ -26,7 +40,14 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MatTableModule,
     MatTooltipModule,
     MatFormFieldModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatButtonModule,
+    MatCardModule,
+    MatGridListModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    FormsModule,
+    MatSelectModule
 
   ],
   exports: [
@@ -36,7 +57,14 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MatTableModule,
     MatTooltipModule,
     MatFormFieldModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatButtonModule,
+    MatCardModule,
+    MatGridListModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    FormsModule,
+    MatSelectModule
   ]
 })
 export class SharedModule { }

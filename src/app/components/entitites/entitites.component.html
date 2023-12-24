@@ -1,9 +1,12 @@
 <div class="container">
     <mat-toolbar>
         <span>Corporate Entities</span>
+        <span class="example-spacer"></span>
+        <button mat-raised-button color="primary" routerLink="/create-entity">Add Entity</button>
     </mat-toolbar>
 
     
+
     <div *ngIf="dataSource.length > 0">
         <div class="main-table">
             <table mat-table [dataSource]="dataSource" class="mat-elevation-z5">

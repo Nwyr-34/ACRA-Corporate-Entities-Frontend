@@ -1,0 +1,271 @@
+<div class="container">
+    <mat-toolbar>
+        <span>Create Entity</span>
+    </mat-toolbar>
+
+    <mat-card style="margin-top: 20px;">
+        <form [formGroup]="form" (ngSubmit)="addEntity()">
+            <mat-grid-list cols="4" rowHeight="70px">
+                <mat-grid-tile [colspan]="1" [rowspan]="1" >
+                    <mat-form-field>
+                        <mat-label>Uen</mat-label>
+                        <input matInput autocomplete="off" formControlName="uen">
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="1" [rowspan]="1" >
+                    <mat-form-field>
+                        <mat-label>IssuanceAgencyId</mat-label>
+                        <input matInput autocomplete="off" formControlName="issuanceAgencyId" value="ACRA">
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="1" [rowspan]="1" >
+                    <mat-form-field>
+                        <mat-label>Entity Name</mat-label>
+                        <input matInput autocomplete="off" formControlName="entityName">
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                
+                <mat-grid-tile [colspan]="1" [rowspan]="1" >
+                    <mat-form-field>
+                        <mat-label>Entity Type Description</mat-label>
+                        <mat-select formControlName="entityTypeDescription">
+                            <mat-option *ngFor="let item of typeDescription" [value]="item">
+                                {{item}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile [colspan]="1" [rowspan]="1" >
+                    <mat-form-field>
+                        <mat-label>Business Constitution Description</mat-label>
+                        <mat-select formControlName="businessConstitutionDescription">
+                            <mat-option *ngFor="let item of businessConstitutionDescription" [value]="item">
+                                {{item}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile [colspan]="1" [rowspan]="1" >
+                    <mat-form-field>
+                        <mat-label>Company Type Description</mat-label>
+                        <mat-select formControlName="companyTypeDescription">
+                            <mat-option *ngFor="let item of companyTypeDescription" [value]="item">
+                                {{item}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile [colspan]="1" [rowspan]="1" >
+                    <mat-form-field>
+                        <mat-label>Company Status Description</mat-label>
+                        <mat-select formControlName="companyStatusDescription">
+                            <mat-option *ngFor="let item of companyStatusDescription" [value]="item">
+                                {{item}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                
+                <mat-grid-tile [colspan]="1" [rowspan]="1" >
+                    <mat-form-field>
+                        <mat-label>Registration Incorporation Date</mat-label>
+                        <input matInput type="datetime-local" formControlName="registrationIncorporationDate">
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile [colspan]="1" [rowspan]="1" >
+                    <mat-form-field>
+                        <mat-label>Uen Issue Date</mat-label>
+                        <input matInput type="datetime-local" formControlName="uenIssueDate">
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile [colspan]="1" [rowspan]="1" >
+                    <mat-form-field>
+                        <mat-label>Address Type</mat-label>
+                        <input matInput autocomplete="off" formControlName="addressType" value="LOCAL">
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile [colspan]="1" [rowspan]="1" >
+                    <mat-form-field>
+                        <mat-label>Block</mat-label>
+                        <input matInput formControlName="block">
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                    <mat-form-field>
+                        <mat-label>Street Name</mat-label>
+                        <input matInput formControlName="streetName">
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                    <mat-form-field>
+                        <mat-label>Level</mat-label>
+                        <input matInput formControlName="level">
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                    <mat-form-field>
+                        <mat-label>Unit</mat-label>
+                        <input matInput formControlName="unit">
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                    <mat-form-field>
+                        <mat-label>Building Name</mat-label>
+                        <input matInput formControlName="buildingName">
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                    <mat-form-field>
+                        <mat-label>Postal Code</mat-label>
+                        <input matInput placeholder="Ex. 1045" formControlName="postalCode">
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile [colspan]="1" [rowspan]="1" >
+                    <mat-form-field>
+                        <mat-label>Account Due Date</mat-label>
+                        <input matInput type="datetime-local" formControlName="accountDueDate">
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile [colspan]="1" [rowspan]="1" >
+                    <mat-form-field>
+                        <mat-label>Annual Return Date</mat-label>
+                        <input matInput type="datetime-local" formControlName="annualReturnDate">
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                    <mat-form-field>
+                        <mat-label>No. of Charges</mat-label>
+                        <input matInput formControlName="noOfCharges">
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                    <mat-form-field>
+                        <mat-label>Primary SSIC Code</mat-label>
+                        <input matInput formControlName="primarySsicCode">
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                    <mat-form-field>
+                        <mat-label>Primary SSIC Description</mat-label>
+                        <input matInput formControlName="primarySsicDescription">
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                    <mat-form-field>
+                        <mat-label>Primary User Described Activity</mat-label>
+                        <input matInput formControlName="primaryUserDescribedActivity">
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                    <mat-form-field>
+                        <mat-label>Secondary SSIC Code</mat-label>
+                        <input matInput formControlName="secondarySsicCode">
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                    <mat-form-field>
+                        <mat-label>Secondary SSIC Description</mat-label>
+                        <input matInput formControlName="secondarySsicDescription">
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                    <mat-form-field>
+                        <mat-label>Secondary User Described Activity</mat-label>
+                        <input matInput formControlName="secondaryUserDescribedActivity">
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                    <mat-form-field>
+                        <mat-label>No. of Officers</mat-label>
+                        <input matInput formControlName="noOfOfficers">
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                    <mat-form-field>
+                        <mat-label>Former Entity Name</mat-label>
+                        <input matInput formControlName="formerEntityName">
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                    <mat-form-field>
+                        <mat-label>Paid-Up Capital Currency</mat-label>
+                        <input matInput formControlName="paidUpCapitalCurrency">
+                    </mat-form-field>
+                </mat-grid-tile>
+                
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                    <mat-form-field>
+                        <mat-label>Paid-Up Capital Ordinary</mat-label>
+                        <input matInput formControlName="paidUpCapitalOrdinary">
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                    <mat-form-field>
+                        <mat-label>Paid-Up Capital Preference</mat-label>
+                        <input matInput formControlName="paidUpCapitalPreference">
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                    <mat-form-field>
+                        <mat-label>Paid-Up Capital Others</mat-label>
+                        <input matInput formControlName="paidUpCapitalOthers">
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                    <mat-form-field>
+                        <mat-label>Uen of Audit Firm</mat-label>
+                        <input matInput formControlName="uenOfAuditFirm">
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                    <mat-form-field>
+                        <mat-label>Name of Audit Firm</mat-label>
+                        <input matInput formControlName="nameOfAuditFirm">
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                    <button mat-raised-button style="margin-right: 20px;">Back</button>
+                    <button type="submit" [disabled]="form.invalid" mat-raised-button color="primary">Accept</button>
+                </mat-grid-tile>
+
+                
+
+
+            </mat-grid-list>
+            
+            
+        </form>
+    </mat-card>
+      
+
+</div>
