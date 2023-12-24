@@ -15,7 +15,7 @@
                 <mat-grid-tile [colspan]="1" [rowspan]="1" >
                     <mat-form-field>
                         <mat-label>IssuanceAgencyId</mat-label>
-                        <input matInput autocomplete="off" formControlName="issuanceAgencyId" value="ACRA">
+                        <input matInput autocomplete="off" formControlName="issuanceAgencyId">
                     </mat-form-field>
                 </mat-grid-tile>
                 <mat-grid-tile [colspan]="1" [rowspan]="1" >
@@ -29,7 +29,7 @@
                 <mat-grid-tile [colspan]="1" [rowspan]="1" >
                     <mat-form-field>
                         <mat-label>Entity Type Description</mat-label>
-                        <mat-select formControlName="entityTypeDescription">
+                        <mat-select formControlName="entityTypeDescription" > 
                             <mat-option *ngFor="let item of typeDescription" [value]="item">
                                 {{item}}
                             </mat-option>
@@ -74,7 +74,7 @@
                 <mat-grid-tile [colspan]="1" [rowspan]="1" >
                     <mat-form-field>
                         <mat-label>Registration Incorporation Date</mat-label>
-                        <input matInput type="datetime-local" formControlName="registrationIncorporationDate">
+                        <input matInput type="datetime-local" formControlName="registrationIncorporationDate" (blur)="setDefaultValue($event)">
                     </mat-form-field>
                 </mat-grid-tile>
 
@@ -109,14 +109,14 @@
                 <mat-grid-tile [colspan]="1" [rowspan]="1">
                     <mat-form-field>
                         <mat-label>Level</mat-label>
-                        <input matInput formControlName="level">
+                        <input matInput formControlName="level" (blur)="setDefaultValue($event)">
                     </mat-form-field>
                 </mat-grid-tile>
 
                 <mat-grid-tile [colspan]="1" [rowspan]="1">
                     <mat-form-field>
                         <mat-label>Unit</mat-label>
-                        <input matInput formControlName="unit">
+                        <input matInput formControlName="unit" (blur)="setDefaultValue($event)">
                     </mat-form-field>
                 </mat-grid-tile>
 

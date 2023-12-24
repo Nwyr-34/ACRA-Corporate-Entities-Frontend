@@ -39,43 +39,43 @@ export class CreateEntityComponent {
               private aRoute: ActivatedRoute ){
       this.form = this.fb.group({
       uen: ['', Validators.required],
-      issuanceAgencyId: [''],
+      issuanceAgencyId: ['ACRA'],
       entityName: ['',Validators.required],
-      entityTypeDescription: [''],
-      businessConstitutionDescription: [''],
-      companyTypeDescription: [''],
-      companyStatusDescription: [''],
+      entityTypeDescription: ['na'],
+      businessConstitutionDescription: ['na'],
+      companyTypeDescription: ['na'],
+      companyStatusDescription: ['na'],
       registrationIncorporationDate: [''],
       uenIssueDate: [''],
-      addressType: [''],
+      addressType: ['LOCAL'],
       block: [''],
-      streetName: [''],
-      level: [''],
-      unit: [''],
-      buildingName: [''],
+      streetName: ['na'],
+      level: ['na'],
+      unit: ['na'],
+      buildingName: ['na'],
       postalCode: [''],
       accountDueDate: [''],
       annualReturnDate: [''],
-      noOfCharges: [''],
-      primarySsicCode: [''],
-      primarySsicDescription: [''],
-      primaryUserDescribedActivity: [''],
+      noOfCharges: ['0'],
+      primarySsicCode: ['', Validators.required],
+      primarySsicDescription: ['', Validators.required],
+      primaryUserDescribedActivity: ['na'],
       secondarySsicCode: [''],
-      secondarySsicDescription: [''],
-      secondaryUserDescribedActivity: [''],
-      noOfOfficers: [''],
-      formerEntityName: [''],
-      paidUpCapitalCurrency: [''],
-      paidUpCapitalOrdinary: [''],
-      paidUpCapitalPreference: [''],
-      paidUpCapitalOthers: [''],
-      uenOfAuditFirm: [''],
-      nameOfAuditFirm: [''],
+      secondarySsicDescription: ['na'],
+      secondaryUserDescribedActivity: ['na'],
+      noOfOfficers: ['0'],
+      formerEntityName: ['na'],
+      paidUpCapitalCurrency: ['na'],
+      paidUpCapitalOrdinary: ['na'],
+      paidUpCapitalPreference: ['na'],
+      paidUpCapitalOthers: ['na'],
+      uenOfAuditFirm: ['na'],
+      nameOfAuditFirm: ['na'],
     })
     
     
 
-    this.aRoute.url.subscribe(data => { console.log(data); 
+    this.aRoute.url.subscribe(data => { 
       if(data.length <=1 ){
         return;
       }
@@ -93,7 +93,7 @@ export class CreateEntityComponent {
 
   getEntity(uen: string){
     this.corporateEntityService.getEntity(uen).subscribe(data => {
-      console.log(data);
+      
       this.form.setValue({
         uen: data.uen,
         issuanceAgencyId: data.issuanceAgencyId,
@@ -171,18 +171,22 @@ export class CreateEntityComponent {
       uenOfAuditFirm: this.form.value.uenOfAuditFirm,
       nameOfAuditFirm: this.form.value.nameOfAuditFirm,
     }
+
+    
     
     if(this.uen!=''){
       entity.uen = this.uen;
       this.editEntity(this.uen, entity);
     } else {
       this.addEntity(entity);
-    }
+    }  
+  }
+
+
+  editEntity(uen: string, entity: CorporateEntity){
 
     
-  
-  }
-  editEntity(uen: string, entity: CorporateEntity){
+
     this.corporateEntityService.updateEntity(uen, entity).subscribe(() => {
       this.router.navigate(['/home']);
      
@@ -207,6 +211,13 @@ export class CreateEntityComponent {
         verticalPosition: 'bottom',
       })
     })  
+  }
+
+  setDefaultValue(event: FocusEvent) {
+    const inputElement = event.target as HTMLInputElement;
+    if (inputElement.value === '') {
+      inputElement.value = 'na';
+    }
   }
 
 }

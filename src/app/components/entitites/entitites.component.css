@@ -1,7 +1,11 @@
-
+.mat-mdc-form-field {
+  margin-top: 30px;
+  font-size: 14px;
+  width: 100%;
+}
 
 .main-table {
-  margin-top: 20px;
+  margin-top: 1px;
   overflow-x: auto;
 }
 

@@ -6,24 +6,27 @@
     </mat-toolbar>
 
     
-
-    <div *ngIf="dataSource.length > 0">
+    <mat-form-field>
+      <mat-label>Search by Uen or Entity Name</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="001X3 (uen)" #input>
+    </mat-form-field>
+    <div *ngIf="dataSource.data.length > 0">
         <div class="main-table">
-            <table mat-table [dataSource]="dataSource" class="mat-elevation-z5">
+            <table mat-table [dataSource]="dataSource" class="mat-elevation-z5" matSort>
     
                 <ng-container matColumnDef="uen" sticky>
-                    <th mat-header-cell *matHeaderCellDef> UEN</th>
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> UEN</th>
                     <td mat-cell *matCellDef="let element"> {{element.uen}} </td>
                   </ng-container>
                 
                 <ng-container matColumnDef="issuanceAgencyId">
-                  <th mat-header-cell *matHeaderCellDef> Issuance agency id </th>
+                  <th mat-header-cell *matHeaderCellDef > Issuance agency id </th>
                   <td mat-cell *matCellDef="let element"> {{element.issuanceAgencyId}} </td>
                 </ng-container>
             
                 <!-- Weight Column -->
                 <ng-container matColumnDef="entityName" sticky>
-                  <th mat-header-cell *matHeaderCellDef> Entity name </th>
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Entity name </th>
                   <td mat-cell *matCellDef="let element"> {{element.entityName}} </td>
                 </ng-container>
             
@@ -191,6 +194,7 @@
                     <a class="pointer" (click)="deleteEntity(element.uen)"  style="color:#e15639"  matTooltip="Delete Entity">
                         <mat-icon>delete</mat-icon>
                     </a>
+                    <span style="visibility: hidden;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                   </td>
                 </ng-container>
             
@@ -199,8 +203,14 @@
               </table>
         </div>
     </div>
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                 showFirstLastButtons
+                 aria-label="Select page of periodic elements">
+    </mat-paginator>
 
-    <h2 *ngIf="dataSource.length == 0">There's no entities to show</h2>
+
+
+    <h2 *ngIf="dataSource.data.length == 0">There's no entities to show</h2>
 
 </div>
 
