@@ -65,7 +65,7 @@ export class CreateEntityComponent {
       secondaryUserDescribedActivity: ['na'],
       noOfOfficers: ['0'],
       formerEntityName: ['na'],
-      paidUpCapitalCurrency: ['na'],
+      paidUpCapitalCurrency: ['SGD'],
       paidUpCapitalOrdinary: ['na'],
       paidUpCapitalPreference: ['na'],
       paidUpCapitalOthers: ['na'],
